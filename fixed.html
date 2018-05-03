@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title></title>
+  <style>
+    @import url(common.css);
+    
+    .left {
+      width: 60%;
+      height: 200px;      
+      background-color: beige;
+      float: left;
+    }
+    
+    .logo {
+      float: left;
+    }
+
+    .right {
+      width: 40%;
+      height: 200px;      
+      background-color: aqua;
+      float: left;
+    }
+
+    .left>ul>li {
+      float: left;
+      margin-right: 20px;
+    }
+    
+  </style>
+</head>
+<body>
+  <div class="wrapper">
+    <div class="nav">
+      <div class="left">
+        <span class="logo">
+          <a href="#"><img src="http://via.placeholder.com/180x100" alt="logo"></a>
+        </span> 
+        <ul>
+          <li><a href="#">캠프</a></li>
+          <li><a href="#">게시판</a></li>
+          <li><a href="#">고객센터</a></li>
+          <li><a href="#">어바웃</a></li>
+        </ul>
+      </div>
+
+      <div class="right">
+        <button>로그인</button>
+        <button>회원가입</button>
+        <button>호스팅</button>
+      </div>
+    </div>
+
+  </div>
+</body>
+</html>
