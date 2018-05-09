@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    div {
+      border-radius: 10px;
+      background-color: gray;
+      padding: 10px;
+    }
+
+    input[type=text], select {
+      width: 100%;
+      padding: 16px;
+      margin: 10px 0;
+      box-sizing: border-box;
+    }
+  </style>
+</head>
+<body>
+  <div>
+    <form action="#">
+      <label for="name">이름</label>
+      <input type="text" id="name" placeholder="이름">
+      
+      <label for="age">나이</label>
+      <input type="text" id="age" placeholder="나이">
+
+      <label for="food">과일</label>
+      <select id="food" name="food">
+        <option value="apple">사과</option>
+        <option value="banana">바나나</option>
+        <option value="chicory">치커리</option>
+      </select>
+
+      <input type="submit" value="제출">
+    </form>
+  </div>
+</body>
+</html>

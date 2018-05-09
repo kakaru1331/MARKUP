@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<style>
+  ul {
+    margin: 0;
+    padding: 0;
+    background-color: #333;
+    overflow: hidden;
+    position: fixed;
+    width: 100%;
+    top: 0px;
+  }
+
+  li {
+    list-style: none;
+    float: left;
+    text-align: center;
+  }
+  
+  li a {
+    display: block;    
+    padding: 8px 16px;
+    text-decoration: none;
+    color: white;
+    /* background-color: #f1f1f1 */
+  }
+
+  li a:hover {    
+    background-color: grey;
+  }
+
+  li:last-child {
+    float: right;
+  }
+
+  body {
+    height: 10000px;
+  }
+</style>
+<body>
+  <ul>
+    <li><a href="#" class="active">HOME</a></li>
+    <li><a href="#">News</a></li>
+    <li><a href="#">Contact</a></li>
+    <li><a href="#">About</a></li>
+  </ul>
+</body>
+</html>

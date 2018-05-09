@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+  
+  .dropdown-content {
+    display: none;
+  }
+
+  .dropdown:hover .dropdown-content {
+    display: block;
+    background-color: #f9f9f9;
+    width: 160px;
+  }
+
+  a {
+    text-decoration: none;
+    display: block;
+    padding: 10px 20px;
+  }
+
+  a:hover {
+    background-color: beige;
+  }
+
+  .drop-btn {
+    cursor: pointer;
+  }
+
+  </style>
+</head>
+<body>
+  <div class="dropdown">
+    <button class="drop-btn">
+      Dropdown
+    </button>
+    <div class="dropdown-content">
+      <a href="#">apple</a>
+      <a href="#">banana</a>
+      <a href="#">chicory</a>
+    </div>
+  </div>
+</body>
+</html>
