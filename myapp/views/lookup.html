@@ -282,10 +282,9 @@
                     <div class="content-right">
                         <div id="map" style="width:100%; height:100%;"></div>
                     </div>
-                </div>                
-            </div>
-            
-            
+                </div>
+                
+            </div>           
         </div>
     </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -307,11 +306,11 @@
                 minDate: moment(),
                 useCurrent: false //Important! See issue #1075
             });
-            $("#datetimepicker6").on("dp.change", function (e) {
-                $('#datetimepicker7').data("DateTimePicker").minDate(e.date);
+            $("#datetimepicker1").on("dp.change", function (e) {
+                $('#datetimepicker2').data("DateTimePicker").minDate(e.date.add(1, 'd'));
             });
-            $("#datetimepicker7").on("dp.change", function (e) {
-                $('#datetimepicker6').data("DateTimePicker").maxDate(e.date);
+            $("#datetimepicker2").on("dp.change", function (e) {
+                $('#datetimepicker1').data("DateTimePicker").maxDate(e.date.subtract(1, 'd'));
             });
         });
         

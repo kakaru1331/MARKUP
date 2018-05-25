@@ -7,12 +7,18 @@ module.exports = (app) => {
         res.render('about.html');
     });
 
-    app.get('/test', (req, res) => {
+    app.get('/lookup', (req, res) => {
         res.render('lookup.html');
+    });
+
+    app.get('/showdetail', (req, res) => {
+        res.render('showdetail.html');
     });
 
     app.get('/date', (req, res) => {
         res.send(req.query.checkin + req.query.checkout);
     });
+
+
 
 }
