@@ -22,15 +22,7 @@ module.exports = (app) => {
 
     app.get('/common/host/hostsignup', (req, res) => {
        res.render('common/host/hostsignup.html') ;
-    });
-
-    app.get('/common/host/hostsignupform', (req, res) => {
-        res.render('common/host/hostsignupform.html');
-    });
-
-    app.get('/common/host/search_pw', (req, res) => {
-        res.render('common/host/search_pw.html');
-    });    
+    });  
 
         //common/user
     app.get('/common/user/userloginform', (req, res) => {
@@ -68,6 +60,19 @@ module.exports = (app) => {
         res.render('mypage/host/roomform2.html');
     })
 
+    app.get('/mypage/host/info', (req, res) => {
+        res.render('mypage/host/info');
+    })
+
+        // mypage/user
+    app.get('/mypage/user/info', (req, res) => {
+        res.render('mypage/user/info.html');
+    });
+    
+    app.get('/mypage/user/currentbooking', (req, res) => {
+        res.render('mypage/user/currentbooking.html');
+    });
+    
     // app.get('/date', (req, res) => {
     //     res.send(req.query.checkin + req.query.checkout);
     // });

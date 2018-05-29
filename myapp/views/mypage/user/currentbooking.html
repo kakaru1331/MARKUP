@@ -7,11 +7,27 @@
 	<title>#</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <style>
-             
+        .logo-frame {
+			width: 350px;
+			text-align: center;
+			margin: 30px auto;
+			background-color: orange;
+			border-radius: 20px;						
+		}
+		
+		.logo-frame img {
+			max-width: 300px;			
+		}        
     </style>
 </head>
 <body>
     <div class="container">
+        <div class="logo-frame">
+            <a href="/">
+                <img alt="logo" src="/resources/img/logo2.png">
+            </a>
+        </div>
+        
         <div class="booking">
             <h3>나의 예약 내역</h3>
             <ul class="nav nav-tabs">                
@@ -38,16 +54,16 @@
                                 <td>4인용 오토 캠핑</td>
                                 <td>2018-06-13 ~ 2018-06-15(2박)</td>
                                 <td>2018-05-11</td>
-                                <td><a href="#">문의하기</a></td>
-                                <td><a href="#">예약취소</a></td>
+                                <td><a href="#" class="btn btn-default">문의하기</a></td>
+                                <td><a href="#" class="btn btn-default">예약취소</a></td>
                             </tr>
                             <tr class="info">
                                 <td>양평 캠핑장</td>
                                 <td>달콤 짜릿 2인용 카라반</td>
                                 <td>2018-06-05 ~ 2018-06-07(2박)</td>
                                 <td>2018-05-01</td>
-                                <td><a href="#">문의하기</a></td>
-                                <td><a href="#">예약취소</a></td>
+                                <td><a href="#" class="btn btn-default">문의하기</a></td>
+                                <td><a href="#" class="btn btn-default">예약취소</a></td>
                             </tr>
                         </tbody>
                     </table>

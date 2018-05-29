@@ -16,30 +16,37 @@
 		.logo-frame img {			
 			width: 300px;
         }
-        
-        .jumbotron {
-            background-color: rgb(244, 247, 244);
-        }
+
         .user-frame {
             text-align: center;
             width: 300px;
-            margin: 0 auto;
-            background-color: rgb(112, 222, 244);
+            margin: 0 auto;            
             border-radius: 10px;
-            height: 150px;
+            height: 150px;      
+            background: rgb(112, 156, 238);
             color: white;
-            line-height: 60px;
+            padding: 25px;
         }
         
         .host-frame {
             text-align: center;
             width: 300px;
-            margin: 0 auto;
-            background-color: rgb(216, 144, 249);
+            margin: 0 auto;            
             border-radius: 10px;
             height: 150px;
-            line-height: 60px;
-            color: white;            
+            background-color: rgb(112, 156, 170);
+            color: white;
+            padding: 25px; 
+        }
+
+        .btn-nav {
+            width: 80%;
+            padding: 10px;
+        }
+
+        .info {
+            font-size: 2rem;
+            padding: 0.8rem;
         }
     </style>
 </head>
@@ -51,23 +58,28 @@
             </a>
             <h2>하이캠퍼 회원가입</h2>
         </div>
-        <div class="jumbotron">
+        
+        <div class="container">
             <div class="row">
                 <div class="col-sm-6">
                     <div class="user-frame">
-                        <p>일반 회원</p>
-                        <a href="#" class="btn btn-default">가입하기</a>
+                        <div class="info">
+                            <span>일반 회원</span> 
+                        </div>
+                        <a href="#" class="btn btn-default btn-nav">가입하기</a>
                     </div>
                 </div>
                 <div class="col-sm-6">
                     <div class="host-frame">
-                        <p>호스트 회원</p>
-                        <a href="#" class="btn btn-default">가입하기</a>
+                        <div class="info">
+                            <span>호스트 회원</span>
+                        </div>
+                        <a href="#" class="btn btn-default btn-nav">가입하기</a>
                     </div>
                 </div>
             </div>
-
         </div>
+       
     </div>
 	<script src="/resources/js/jquery-3.3.1.min.js.js"></script>
 	<script src="/resources/css/bootstrap/js/bootstrap.min.js"></script>

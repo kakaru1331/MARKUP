@@ -28,10 +28,24 @@
         }
         .controller {
             text-align: center;
-        }        
+        }    
+
         #thumbnail {
             width: 500px;
             height: 400px;
+        }
+
+        .btn-nav {
+            width: 30%;
+        }
+        
+        .tab-content input[type="text"] {
+            width: 30%;
+            margin: 0 auto;
+        }
+
+        .form-control {
+            font-size: 16px;
         }
     </style>
 </head>
@@ -73,84 +87,84 @@
             <div class="tab-content">                        
                     <div id="menu1" class="tab-pane fade in active">
                         <h3>캠핑장 이름</h3>
-                        <input type="text" name="campsite_name">
+                        <input type="text" name="campsite_name" placeholder="캠핑장 이름" class="form-control">
                     </div>
                     <div id="menu2" class="tab-pane fade">
                         <h3>연락처</h3>
-                        <input type="text" name="phone_num">
+                        <input type="text" name="phone_num" placeholder="연락처" class="form-control">
                     </div>
                     <div id="menu3" class="tab-pane fade">
                         <h3>캠핑 유형</h3>
                         <label for="cg1">
-                            <input type="checkbox" name="campsite_group" value="오토캠핑" id="cg1"> 오토캠핑
+                            <input type="checkbox" name="campsite_group" value="오토캠핑" id="cg1" class="form-control"> 오토캠핑
                         </label>			
                         <label for="cg2">
-                            <input type="checkbox" name="campsite_group" value="백팩킹" id="cg2"> 백팩킹
+                            <input type="checkbox" name="campsite_group" value="백팩킹" id="cg2" class="form-control"> 백팩킹
                         </label>
                         <label for="cg3">
-                            <input type="checkbox" name="campsite_group" value="글램핑" id="cg3"> 글램핑
+                            <input type="checkbox" name="campsite_group" value="글램핑" id="cg3" class="form-control"> 글램핑
                         </label>
                         <label for="cg4">
-                            <input type="checkbox" name="campsite_group" value="카라반" id="cg4"> 카라반
+                            <input type="checkbox" name="campsite_group" value="카라반" id="cg4" class="form-control"> 카라반
                         </label>
                     </div>
                     <div id="menu4" class="tab-pane fade">
                         <h3>위치</h3>
-                        <input type="text" name="address">
+                        <input type="text" name="address" placeholder="캠핑장 위치" class="form-control">
                     </div>
                     <div id="menu5" class="tab-pane fade">
                         <h3>편의시설</h3>
                         <label for="comforts1">
-                            <input type="checkbox" name="comforts" value="샤워실" id="comforts1"> 샤워실
+                            <input type="checkbox" name="comforts" value="샤워실" id="comforts1" class="form-control"> 샤워실
                         </label>			
                         <label for="comforts2">
-                            <input type="checkbox" name="comforts" value="화장실" id="comforts2"> 화장실
+                            <input type="checkbox" name="comforts" value="화장실" id="comforts2" class="form-control"> 화장실
                         </label>
                         <label for="comforts3">
-                            <input type="checkbox" name="comforts" value="매점" id="comforts3"> 매점
+                            <input type="checkbox" name="comforts" value="매점" id="comforts3" class="form-control"> 매점
                         </label>
                         <label for="comforts4">
-                            <input type="checkbox" name="comforts" value="흡연실" id="comforts4"> 흡연실
+                            <input type="checkbox" name="comforts" value="흡연실" id="comforts4" class="form-control"> 흡연실
                         </label>
                         <label for="comforts5">
-                            <input type="checkbox" name="comforts" value="수영장" id="comforts5"> 수영장
+                            <input type="checkbox" name="comforts" value="수영장" id="comforts5" class="form-control"> 수영장
                         </label>
                     </div>
                     <div id="menu6" class="tab-pane fade">
                         <h3>액티비티</h3>
                         <label for="activity1">
-                            <input type="checkbox" name="activity" value="낚시" id="activity1"> 낚시
+                            <input type="checkbox" name="activity" value="낚시" id="activity1" class="form-control"> 낚시
                         </label>			
                         <label for="activity2">
-                            <input type="checkbox" name="activity" value="등산" id="activity2"> 등산
+                            <input type="checkbox" name="activity" value="등산" id="activity2" class="form-control"> 등산
                         </label>
                         <label for="activity3">
-                            <input type="checkbox" name="activity" value="스키" id="activity3"> 스키
+                            <input type="checkbox" name="activity" value="스키" id="activity3" class="form-control"> 스키
                         </label>
                         <label for="activity4">
-                            <input type="checkbox" name="activity" value="계곡" id="activity4"> 계곡
+                            <input type="checkbox" name="activity" value="계곡" id="activity4" class="form-control"> 계곡
                         </label>
                         <label for="activity5">
-                            <input type="checkbox" name="activity" value="해수욕" id="activity5"> 해수욕
+                            <input type="checkbox" name="activity" value="해수욕" id="activity5" class="form-control"> 해수욕
                         </label>
                     </div>
                     <div id="menu7" class="tab-pane fade">
                         <h3>상세설명</h3>
-                        <textarea name="explanation" cols="30" rows="10"></textarea>
+                        <textarea name="explanation" cols="30" rows="10" placeholder="캠핑장 상세설명" class="form-control"></textarea>
                     </div>
                     <div id="menu8" class="tab-pane fade">
                         <h3>주의사항</h3>
-                        <textarea name="attension" cols="30" rows="10"></textarea>
+                        <textarea name="attension" cols="30" rows="10" placeholder="캠핑장 주의사항" class="form-control"></textarea>
                     </div>
                     <div id="menu9" class="tab-pane fade">
                         <h3>캠핑장 대표사진</h3>
-                        <input type="file" id="imgInput" name="campsite_thumbnail" style="margin: 0 auto;">
-                        <img id="thumbnail" alt="캠핑장 대표 사진" src="${root_path}\\${filename}">                
+                        <input type="file" id="imgInput" name="campsite_thumbnail" style="margin: 0 auto;">                        
+                        <img id="thumbnail" alt="캠핑장 대표 사진" src="${root_path}\\${filename}">                        
                     </div>                                       
             </div>
             <div class="controller">
-                <a href="#" class="btn btn-default">이전</a>
-                <input class="btn btn-primary" type="submit" value="수정">  
+                <a href="/" class="btn btn-default btn-nav">취소</a>
+                <input class="btn btn-success btn-nav" type="submit" value="수정">  
             </div>
         </form>
         

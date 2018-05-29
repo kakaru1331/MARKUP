@@ -10,26 +10,29 @@
 </head>
 <body>
     <div class="container">
-        <div class='col-md-5'>
-            <div class="form-group">
-                <div class='input-group date' id='datetimepicker6'>
-                    <input type='text' class="form-control" />
-                    <span class="input-group-addon">
-                        <span class="glyphicon glyphicon-calendar"></span>
-                    </span>
+        <form action="http://localhost:3000/date" method="get">
+            <div class='col-md-5'>
+                <div class="form-group">
+                    <div class='input-group date' id='datetimepicker6'>
+                        <input type='text' class="form-control" name="checkin" />
+                        <span class="input-group-addon">
+                            <span class="glyphicon glyphicon-calendar"></span>
+                        </span>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class='col-md-5'>
-            <div class="form-group">
-                <div class='input-group date' id='datetimepicker7'>
-                    <input type='text' class="form-control" />
-                    <span class="input-group-addon">
-                        <span class="glyphicon glyphicon-calendar"></span>
-                    </span>
+            <div class='col-md-5'>
+                <div class="form-group">
+                    <div class='input-group date' id='datetimepicker7'>
+                        <input type='text' class="form-control" name="checkout" />
+                        <span class="input-group-addon">
+                            <span class="glyphicon glyphicon-calendar"></span>
+                        </span>
+                    </div>
                 </div>
             </div>
-        </div>
+            <input type="submit" value="전송">            
+        </form>
     </div>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -43,11 +46,13 @@
         $(function () {
             $('#datetimepicker6').datetimepicker({               
                 locale: 'ko',
-                format: 'LL (dd)'                              
+                format: 'LL (dd)',
+                minDate: moment()
             });
             $('#datetimepicker7').datetimepicker({
                 locale: 'ko',
                 format: 'LL (dd)',
+                minDate: moment(),
                 useCurrent: false //Important! See issue #1075
             });
             $("#datetimepicker6").on("dp.change", function (e) {
