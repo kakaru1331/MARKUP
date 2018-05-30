@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>#</title>
+	<link rel="stylesheet" href="/resources/css/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/resources/css/fontawesome.min.css">
+    <style>
+        .logo-frame {
+			width: 350px;
+			text-align: center;
+			margin: 30px auto;
+			background-color: orange;
+			border-radius: 20px;						
+		}
+		
+		.logo-frame img {
+			max-width: 300px;			
+		}
+
+        .table {
+            background: rgb(203, 240, 255);
+        }
+
+        .guide {
+            margin: 0 auto;
+            max-width: 400px;
+            font-size: 24px;
+        }
+        
+        .control {
+            text-align: center;
+            margin: 30px;
+        }
+
+        .btn {
+            padding: 10px;
+        }
+
+        .price {
+            font-weight: 800;
+            font-size: 20px;            
+        }
+
+        .total-price {
+            font-weight: 800;
+            font-size: 20px;           
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+         <div class="logo-frame">
+			<a href="/">
+				<img src="/resources/img/logo2.png" alt="logo">
+			</a>					
+        </div>
+        
+        <div class="guide">
+            <p>예약이 완료되었습니다. 예약 정보는 마이 페이지에서 언제든지 확인하실 수 있습니다.</p>
+        </div>
+        <div class="book-frame">
+            <div class="info">
+                <h3>예약 결과</h3>
+            </div>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>캠핑장명</th>
+                        <th>위치</th>
+                        <th>상품명</th>
+                        <th>이용일자</th>
+                        <th>요금</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>산음숲자연학교캠핑장</td>
+                        <td>경기 양평군 단월면 봉미산샘골길 1</td>
+                        <td>낭만충전 카라반</td>
+                        <td>2018.06.01 ~ 2018.06.03 (2박 3일)</td>
+                        <td>
+                            <div class="price">50,000원 (1박)</div>    
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="4">합계</td>
+                        <td>
+                            <div class="total-price">
+                                100,000원 (2박)
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="control">
+            <a href="#" class="btn btn-default">나의 예약 목록</a>
+        </div>
+    </div>
+
+	<script src="/resources/js/jquery-3.3.1.min.js.js"></script>
+	<script src="/resources/css/bootstrap/js/bootstrap.min.js"></script>
+</body>
+</html>

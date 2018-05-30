@@ -72,6 +72,15 @@ module.exports = (app) => {
     app.get('/mypage/user/currentbooking', (req, res) => {
         res.render('mypage/user/currentbooking.html');
     });
+
+    app.get('/mypage/user/showpay', (req, res) => {
+        res.render('mypage/user/showpay.html');
+    });
+    
+    app.get('/mypage/user/payresult', (req, res) => {
+        res.render('mypage/user/payresult.html');
+    });
+
     
     // app.get('/date', (req, res) => {
     //     res.send(req.query.checkin + req.query.checkout);

@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>#</title>
+	<link rel="stylesheet" href="/resources/css/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/resources/css/fontawesome.min.css">
+    <style>
+        .price {
+            font-weight: 800;
+            font-size: 20px;            
+        }
+
+        .total-price {
+            font-weight: 800;
+            font-size: 20px;           
+        }
+
+        .own-point {
+            font-weight: 800;
+            font-size: 20px;           
+        }
+
+        .after-pay-point {
+            font-weight: 800;
+            font-size: 20px;           
+        }
+
+        .point-frame div {
+            margin: 10px;
+        }
+
+        .control {
+            text-align: center;
+            margin-top: 50px;            
+        }
+        
+        .btn {
+            padding: 10px;
+        }
+
+        .btn-cancel {
+            width: 20%;
+        }
+        
+        .btn-pay {
+            width: 30%;
+        }
+
+        .btn-charge {
+            width: 30%;
+        }
+
+        .table {
+            background: rgb(203, 240, 255);
+        }
+
+        .logo-frame {
+			width: 350px;
+			text-align: center;
+			margin: 30px auto;
+			background-color: orange;
+			border-radius: 20px;						
+		}
+		
+		.logo-frame img {
+			max-width: 300px;			
+		}
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="logo-frame">
+			<a href="/">
+				<img src="/resources/img/logo2.png" alt="logo">
+			</a>					
+        </div>
+        
+        <div class="pay-content">
+            <div class="book-frame">
+                <div class="info">
+                    <h3>예약 정보</h3>
+                </div>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>캠핑장명</th>
+                            <th>위치</th>
+                            <th>상품명</th>
+                            <th>이용일자</th>
+                            <th>요금</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>산음숲자연학교캠핑장</td>
+                            <td>경기 양평군 단월면 봉미산샘골길 1</td>
+                            <td>낭만충전 카라반</td>
+                            <td>2018.06.01 ~ 2018.06.03 (2박 3일)</td>
+                            <td>
+                                <div class="price">50,000원 (1박)</div>    
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="4">합계</td>
+                            <td>
+                                <div class="total-price">
+                                    100,000원 (2박)
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>            
+            
+            <div class="point-frame">
+                <div class="info">
+                    <h3>포인트 현황</h3>
+                </div>      
+                <table class="table" style="width: 50%;">
+                    <tr>
+                        <td>보유 포인트</td>
+                        <td class="own-point">300,000 (포인트)</td>
+                    </tr>
+                    <tr>
+                        <td>결제 요금</td>
+                        <td class="total-price">100,000 (원)</td>
+                    </tr>  
+
+                    <tr>
+                        <td>결제 후 포인트</td>
+                        <td class="after-pay-point">200,000 (포인트)</td>
+                    </tr>                    
+                </table>
+            </div>
+            
+            <div class="control">
+                <a href="#" class="btn btn-default btn-cancel">취소하기</a>
+                <a href="#" class="btn btn-primary btn-pay">결제하기</a>
+                <a href="#" class="btn btn-success btn-charge">포인트 충전하기</a>
+            </div>
+        </div>
+    </div>
+	<script src="/resources/js/jquery-3.3.1.min.js.js"></script>
+	<script src="/resources/css/bootstrap/js/bootstrap.min.js"></script>
+</body>
+</html>
