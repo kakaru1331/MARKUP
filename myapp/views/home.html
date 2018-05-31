@@ -5,12 +5,20 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
 	<title>#</title>
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<link rel="stylesheet" href="/resources/css/bootstrap/css/bootstrap.min.css">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link href="https://fonts.googleapis.com/css?family=Jua" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Jua|Nanum+Gothic" rel="stylesheet">
 	<style type="text/css">
-		body {
-			height: 10000px;
+		h3 {
+			font-family: 'Jua', sans-serif;			
+		}		
+
+		p {
+			font-family: 'Nanum Gothic', sans-serif;
+			font-size: 1.6rem;
 		}
+
 		.global-nav {
 			background-color: orange;
 			width: 100%;
@@ -19,9 +27,12 @@
 			z-index: 100;
 		}
 		
-		section {
+		.legacy {
 			text-align: center;
-			margin-top: 200px;
+			margin-top: 50px;
+			/* margin-bottom: 50px; */
+			height: 100vh;			
+			/* display: none; */
 		}
 		
 		#promotion {
@@ -37,6 +48,91 @@
 		.quick-search img {
 			width: 100%;
 			height: 200px;
+		}
+		
+		section {
+			background-attachment: fixed;
+			height: 100vh;
+			background-size: cover;
+		}
+
+		.search {
+			margin-top: 50px;
+			background-image: url('https://images.unsplash.com/photo-1470472304068-4398a9daab00?ixlib=rb-0.3.5&s=55b8e313e798f6a8e12fbc9d9fc0078d&auto=format&fit=crop&w=1350&q=80');
+		}		
+
+		.search-content {
+			width: 50%;
+			position: relative;
+			left: 50%;
+			top: 30%;
+			transform: translateX(-50%) translateY(-50%);
+			text-align: center;			
+		}
+
+		.search-info {
+			margin-bottom: 24px;
+		}
+		
+		.btn-search {
+			display: inline-block;
+			width: 70%;
+			border: 1px solid gray;
+			padding: 1.2rem;
+		}
+
+		.quick-search {
+			
+		}
+
+		.hosting {
+			background-image: url('https://source.unsplash.com/user/erondu/1600x900');
+		}
+
+		.fa-search {
+			padding: 1.2rem;						
+		}
+		
+		.quick-search {
+			background-image: url('/resources/img/sky.jpg');
+			color: white;
+			opacity: 0.9;			
+		}
+
+		.img-frame {
+			height: 100vh;			
+		}
+
+		.quick-search figure {
+			margin-top: 22vh;			
+		}
+
+		.quick-search img {
+			height: 50vh;
+			border-top-left-radius: 1rem;
+			border-top-right-radius: 1rem;
+		}
+		
+		.quick-search figcaption {
+			text-align: center;
+			border-right: 1px solid white;
+			border-bottom: 1px solid white;
+			border-left: 1px solid white;
+			border-bottom-left-radius: 1rem;
+			border-bottom-right-radius: 1rem;
+			padding: 1.1rem;
+		}
+
+		.quick-search figcaption h3 {
+			margin-top: 0;
+		}
+
+		.quick-search h3:after {
+			content: '';
+			display: block;
+			width: 30%;
+			margin: 1rem auto;						
+			border-bottom: 1px solid white;
 		}
 	</style>
 </head>
@@ -84,8 +180,8 @@
             </ul>
             
             <ul class="nav navbar-nav navbar-right">
-            	<li class="dropdown"><a href="/common/user/userlogin">로그인</a></li>
-          		<li class="dropdown"><a href="/common/signup">회원가입</a></li>
+            	<li class="dropdown"><a href="/common/login">로그인</a></li>
+          		<li class="dropdown"><a href="/common/user/usersignup">회원가입</a></li>
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">마이 페이지 <span class="caret"></span></a>
                     <ul class="dropdown-menu">
@@ -99,36 +195,55 @@
         </div>
     </nav>	
 
-	<section>
+	<section class="legacy">
 		<div class="container">
 			<ul>
 				<li>
 					<a href="/host/showcamp">캠핑장 정보</a>
 				</li>
 				<li>
-					<a href="/host/campform">캠핑장 등록</a>
-				</li>
+					<a href="/host/campform">캠핑장 등록</a>				
+				</li>				
 				<li>
 					<a href="/host/currentbooking_host">현재 예약내역</a>
 				</li>
-				
 				<li>
-					<a href="/host/currentbookingdetail_host">현재 예약내역 상세보기</a>
+					<a href="/host/currentbookingdetail_host">현재 예약내역 상세보기</a>				
 				</li>
-				
+				<li>
+					<a href="/common/hostfind_id_form">호스트 아이디 찾기</a>
+				</li>
+				<li>
+					<a href="/common/userfind_id_form">사용자 아이디 찾기</a>	
+				</li>
+				<li>
+					<a href="/etc/chat/enterChat">웹소켓채팅</a>	
+				</li>
 				<li>
 					<a href="/host/showinfo">호스트정보</a>
+				</li>
+				<li>
+					<a href="/host/showcamp">캠핑장 정보</a>
+				</li>
+				<li>
+					<a href="/host/campform">캠핑장 등록</a>
+				</li>			
+				<li>
+					<a href="/host/showinfo">호스트정보</a>
+				</li>
+				<li>
+					<a href="/filter/campsite_group">필터검색</a>
 				</li>
 			</ul>
 		
 			<div class="search">
 				<form action="#">
-					<input type="text" placeholder="캠핑장명 또는 지역" name="search">
+					<input type="text" placeholder="검색" name="search">
 					<button type="submit"><i class="fa fa-search"></i></button>
 				</form>
 			</div>		
 			
-			<div class="promotion">
+			<!-- <div class="promotion">
 				<h2>Promotion</h2>
 				<div id="promotion" class="carousel slide" data-ride="carousel">							
 					<ol class="carousel-indicators">
@@ -205,22 +320,81 @@
 					</div>									
 				</div>	
 			</div>						
-		</div>		
+		</div>		 -->
+	</section>
+
+	<section class="search">
+		<div class="search-content">
+			<div class="search-info">
+				<h3>원하는 캠핑장을 검색해보세요!</h3>
+				<p>(지역 또는 캠핑 종류로 검색)</p>
+			</div>
+			<form action="#" method="post">
+				<input type="text" name="" class="btn btn-search">
+				<button type="submit"><i class="fa fa-search"></i></button>
+			</form>
+		</div>
 	</section>
 	
-	<div id="map" style="width:500px;height:400px;"></div>
-	<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=33ce5896736377936ebe7d42238ed01f"></script>
-	<!-- <script type="text/javascript">
-		var container = document.getElementById('map'); //지도를 담을 영역의 DOM 레퍼런스
-		var options = { //지도를 생성할 때 필요한 기본 옵션
-			center: new daum.maps.LatLng(33.450701, 126.570667), //지도의 중심좌표.
-			level: 3 //지도의 레벨(확대, 축소 정도)
-		};
-	
-		var map = new daum.maps.Map(container, options); //지도 생성 및 객체 리턴
-	</script> -->
-	
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<section class="quick-search">
+		<div class="quick-search-content">
+			<div class="col-sm-3 img-frame">
+				<figure>
+					<a href="#">
+						<img src="/resources/img/autocamping.jpg" alt="오토캠핑">
+					</a>
+				</figure>
+				<figcaption>
+					<h3>오토캠핑</h3>
+					<p>캠핑카를 타고 야영!</p>
+				</figcaption>
+			</div>
+
+			<div class="col-sm-3 img-frame">
+				<figure>
+					<a href="#">
+						<img src="/resources/img/glamping.jpg" alt="글램핑">
+					</a>
+				</figure>
+				<figcaption>
+					<h3>글램핑</h3>
+					<p>럭셔리하게 즐기는 캠핑!</p>
+				</figcaption>				
+			</div>
+
+			<div class="col-sm-3 img-frame">
+				<figure>
+					<a href="#">
+						<img src="/resources/img/backpacking.jpg" alt="백패킹">
+					</a>
+				</figure>
+				<figcaption>
+					<h3>백패킹</h3>
+					<p>가방 하나 들고 떠나는 낭만 캠핑!</p>
+				</figcaption>
+			</div>
+
+			<div class="col-sm-3 img-frame">
+				<figure>
+					<a href="#">
+						<img src="/resources/img/caravan.jpg" alt="카라반">
+					</a>
+				</figure>
+				<figcaption>
+					<h3>카라반</h3>
+					<p>만능 카라반과 함께 즐거운 캠핑!</p>
+				</figcaption>
+			</div>
+		</div>
+	</section>
+
+	<section class="hosting">
+		<div class="hosting-content">
+
+		</div>
+	</section>
+
+	<script src="/resources/js/jquery-3.3.1.min.js.js"></script>
+	<script src="/resources/css/bootstrap/js/bootstrap.min.js"></script>
 </body>
 </html>
