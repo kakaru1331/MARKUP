@@ -44,7 +44,7 @@ module.exports = (app) => {
 
     app.get('/etc/showdetail', (req, res) => {
         res.render('etc/showdetail.html');
-    });
+    });  
 
     // mypage
         // mypage/host
@@ -79,6 +79,10 @@ module.exports = (app) => {
     
     app.get('/mypage/user/payresult', (req, res) => {
         res.render('mypage/user/payresult.html');
+    });
+
+    app.get('/mypage/user/showbasket', (req, res) => {
+        res.render('mypage/user/showbasket.html');
     });
 
     
