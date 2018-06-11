@@ -11,6 +11,7 @@
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 	<link href="https://fonts.googleapis.com/css?family=Jua" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css?family=Jua|Nanum+Gothic" rel="stylesheet">
+	<link href="/resources/css/glnav.css" rel="stylesheet">
 	<style type="text/css">
 		h3 {
 			font-family: 'Jua', sans-serif;			
@@ -19,14 +20,6 @@
 		p {
 			font-family: 'Nanum Gothic', sans-serif;
 			font-size: 1.6rem;
-		}
-
-		.global-nav {
-			background-color: orange;
-			width: 100%;
-			position: fixed;
-			top: 0;
-			z-index: 100;
 		}
 		
 		.legacy {
@@ -173,12 +166,13 @@
         </a>        
         <div class="collapse navbar-collapse" id="nav-collapse">
             <ul class="nav navbar-nav">
-               	<li><a href="/filter/campsite_group">캠핑장 찾기</a></li>
+               	<li><a href="/filter/filterlist">캠핑장 찾기</a></li>
                	<li class="dropdown">
                 	<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">호스팅 <span class="caret"></span></a>
                 	<ul class="dropdown-menu">
                         <li><a href="/host/showcamp">마이호스팅</a></li>
-                        <li><a href="/host/addcamp">캠핑장 등록</a></li>                        
+                        <li><a href="/host/addcamp">캠핑장 등록</a></li>   
+						<li><a href="/host/roomform">캠핑상품 등록</a></li>                                             
                     </ul>
                	</li>                
                 <!-- <li class="dropdown">
@@ -237,9 +231,6 @@
 	<section class="legacy">
 		<div class="container">
 			<ul>
-				<li>
-					<a href="/host/showcamp">캠핑장 정보</a>
-				</li>
 			
 				<li>
 					<a href="/host/currentbooking_host">현재 예약내역</a>
@@ -267,35 +258,28 @@
 					<a href="/host/showinfo">호스트정보</a>
 				</li>
 				<li>
-					<a href="/host/showcamp">캠핑장 정보</a>
-				</li>
-				<li>
-					<a href="/host/campform">캠핑장 등록</a>
-				</li>			
-
-				<li>
 					<a href="/host/showinfo">호스트정보</a>
 
 				</li>
 
 				<li>
 					<a href="/board/showcomment">댓글 작성폼</a>
+
 				</li>
 				<li>
 
-					<a href="/filter/campsite_group">필터검색</a>
+					<a href="/filter/filterlist">필터검색</a>
 
 				</li>
 				<li>
 					<a href="/user/testUserBooking">테스트</a>
 				</li>
-				<li><%= session.getAttribute("id") %></li>
-				<li><%= session.getAttribute("password") %></li>
-				<li><%= session.getAttribute("user_no") %></li>
-				<li><%= session.getAttribute("host_no") %></li>
 				<li>
 					<a href="/thumbupform">좋아요</a>
 				</li>
+				<li>아이디: <%= session.getAttribute("id") %></li>				
+				<li>유저 넘버: <%= session.getAttribute("user_no") %></li>
+				<li>호스트 넘버: <%= session.getAttribute("host_no") %></li>
 			</ul>
 	</section>
 		
