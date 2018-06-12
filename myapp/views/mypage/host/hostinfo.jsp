@@ -105,7 +105,7 @@
 		                <li class="dropdown">
 		                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">마이 페이지 <span class="caret"></span></a>
 		                    <ul class="dropdown-menu">
-		                        <li><a href="#">개인정보 수정</a></li>
+		                        <li><a href="/user/showinfo">개인정보 수정</a></li>
 		                        <li><a href="/user/currentbooking_user">예약 내역</a></li>
 		                        <li><a href="/user/showbasket">장바구니</a></li>
 		                        <li><a href="/common/logout">로그아웃</a></li>
@@ -137,11 +137,7 @@
 					<tr>
 						<th class="col-sm-2">아이디</th>
 						<td>${list.id}</td>
-					</tr>
-					<tr>
-						<th>이름</th>
-						<td>${list.name}</td>
-					</tr>
+					</tr>					
 					<tr>
 						<th>전화번호</th>
 						<td>${list.phone_num}</td>			
@@ -151,16 +147,8 @@
 						<td>${list.email}</td>
 					</tr>
 					<tr>
-						<th>생년월일</th>
-						<td>${list.birth}</td>
-					</tr>
-					<tr>
-						<th>성별</th>
-						<td>${list.gender}</td>
-					</tr>
-					<tr>
 						<th>보유 포인트</th>
-						<td>${list.point} 포인트</td>
+						<td>${list.point}</td>
 					</tr>
 					<tr>
 						<th>대표자 성명</th>
