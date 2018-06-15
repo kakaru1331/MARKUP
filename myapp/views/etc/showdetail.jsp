@@ -2,6 +2,7 @@
     pageEncoding="utf-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -12,7 +13,12 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/css/bootstrap-datetimepicker.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <style>        
+    <link href="/resources/css/glnav.css" rel="stylesheet">
+    <style>
+    	.container {
+    		margin-top: 100px;	
+    	}   
+    	     
         .top-contents {
             margin-bottom: 50px;
         }
@@ -51,12 +57,12 @@
         
         .room-list {
             width: 100%;
-            border: 1px solid gray;
+            /* border: 1px solid gray; */
             text-align: center;
         }
 
         .room-list td {
-            border: 1px solid tomato;
+            border: 1px solid rgba(221, 217, 217, 0.5);
             padding: 20px;
         }
 
@@ -85,9 +91,109 @@
             margin-left: 20px;
             background-color: gainsboro;
         }
+        
+        .glyphicon-star {
+        	color: orange;
+        }
+        
+        .glyphicon-star-empty {
+        	color: gray;
+        }
+        
+        .glyphicon-star {
+        	color: orange;
+        }
+        
+        .glyphicon-star-empty {
+        	color: gray;
+        }
+        
+        .bottom-contents {
+        	min-height: 200px;
+        	margin-bottom: 50px;
+        }
+        
+        .review-list {
+        	border-bottom: 1px solid gray;
+        	margin-bottom: 10px;
+        }
+        
+        .review-list:last-child {
+			border: none;	
+		}
     </style>
 </head>
 <body>
+	<nav class="navbar navbar-default global-nav">          
+        <a href="/" class="navbar-brand">
+        	<div>
+        		<img height="20px" alt="로고" src="/resources/img/logo2.png">	
+        	</div>
+        </a>        
+        <div class="collapse navbar-collapse" id="nav-collapse">
+            <ul class="nav navbar-nav">
+               	<li><a href="/filter/filterlist">캠핑장 찾기</a></li>
+               	<li class="dropdown">
+                	<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">호스팅 <span class="caret"></span></a>
+                	<ul class="dropdown-menu">
+                        <li><a href="/host/showcamp">마이호스팅</a></li>
+                        <li><a href="/host/addcamp">캠핑장 등록</a></li>   
+						<li><a href="/host/roomform">캠핑상품 등록</a></li>                                             
+                    </ul>
+               	</li>                
+                <!-- <li class="dropdown">
+                	<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">커뮤니티 <span class="caret"></span></a>
+                	<ul class="dropdown-menu">
+                        <li><a href="/board/showlist_camptip">캠핑 팁</a></li>
+                        <li><a href="/board/showlist_campreview">캠핑 후기</a></li>
+                        <li><a href="/board/showlist_ask">질문 게시판</a></li>
+                    </ul>
+               	</li> -->               	
+                <li class="dropdown">
+                	<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">고객센터 <span class="caret"></span></a>
+                	<ul class="dropdown-menu">
+                        <li><a href="/board/showlist_faq">FAQ</a></li>
+                        <li><a href="/board/showlist_notice">공지사항</a></li>
+                        <li><a href="/board/showlist_one2one">1:1 문의</a></li>
+                        <li><a href="#">나의 문의 내역</a></li>
+                    </ul>
+               	</li>
+                
+                <li><a href="#">어바웃</a></li>
+            </ul>
+            
+            <ul class="nav navbar-nav navbar-right">
+            	<c:if test="${empty sessionScope.id}">
+	            	<li class="dropdown"><a href="/common/login">로그인</a></li>
+	          		<li class="dropdown"><a href="/common/signup">회원가입</a></li>            	
+            	</c:if>
+            	
+				<c:if test="${!empty sessionScope.user_no}">
+	                <li class="dropdown">
+	                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">마이 페이지 <span class="caret"></span></a>
+	                    <ul class="dropdown-menu">
+	                        <li><a href="/user/showinfo">개인정보 수정</a></li>
+	                        <li><a href="/user/currentbooking_user">예약 내역</a></li>
+	                        <li><a href="/user/showbasket">장바구니</a></li>
+	                        <li><a href="/common/logout">로그아웃</a></li>
+	                    </ul>
+	                </li>
+				</c:if>
+				
+				<c:if test="${!empty sessionScope.host_no}">
+					<li class="dropdown">
+	                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">마이 페이지 <span class="caret"></span></a>
+	                    <ul class="dropdown-menu">
+	                        <li><a href="/host/showinfo">개인정보 수정</a></li>
+	                        <li><a href="/host/currentbooking_host">예약 내역</a></li>	                        
+	                        <li><a href="/common/logout">로그아웃</a></li>
+	                    </ul>
+	                </li>
+				</c:if>
+            </ul>      
+        </div>
+    </nav>
+	
     <div class="container">
         <div class="top-contents">
             <div class="frame"> 
@@ -95,10 +201,23 @@
             </div>
             <h2 align="center" class="campsite-name">${list[0].campsite_name}</h2>
             <div class="star">
-                <i class="fa fa-star" aria-hidden="true"></i>
-                <i class="fa fa-star" aria-hidden="true"></i>
-                <i class="fa fa-star" aria-hidden="true"></i>
-                <i class="fa fa-star" aria-hidden="true"></i>        
+            	<c:if test="${list[0].score le 0}">
+              		<c:forEach varStatus="status" begin="1" end="5">
+              			<span class="glyphicon glyphicon-star glyphicon-star-empty"></span>
+              		</c:forEach>
+              	</c:if>
+              	
+              	<c:if test="${list[0].score gt 0}">
+	               	<c:forEach varStatus="status" begin="1" end="5">		                                		
+	               		<c:if test="${list[0].score ge status.current}">
+	               			<span class="glyphicon glyphicon-star"></span>
+	               		</c:if>
+	               		<c:if test="${list[0].score lt status.current}">
+	               			<span class="glyphicon glyphicon-star glyphicon-star-empty"></span>
+	               		</c:if>			                                		
+	               	</c:forEach>		                                	
+	               	(<fmt:formatNumber value="${list[0].score}" pattern=".0"/>)
+              	</c:if>        
             </div>
         </div>
 
@@ -129,12 +248,13 @@
             
         <div id="map" style="width: 50%; height: 250px;"></div>
          
-        <div class="hz-line"></div>       
+        <div class="hz-line"></div>
+               
         <form action="/user/bookinginprogress_1" method="post" > 
         <div class="room-frame">                            
             <div class="form-group col-sm-6">
                 <div class='input-group date' id='datetimepicker1'>
-                    <input type='text' class="form-control" name="checkin" placeholder="체크인" />
+                    <input type='text' class="form-control" name="checkin" placeholder="체크인" required />
                     <span class="input-group-addon">
                         <span class="glyphicon glyphicon-calendar"></span>
                     </span>
@@ -144,83 +264,42 @@
       		<input hidden="${list[0].room_no}" name="room_no" value="${list[0].room_no}">
             <div class="form-group col-sm-6">
                 <div class='input-group date' id='datetimepicker2'>
-                    <input type='text' class="form-control" name="checkout" placeholder="체크아웃"/>
+                    <input type='text' class="form-control" name="checkout" placeholder="체크아웃" required />
                     <span class="input-group-addon">
                         <span class="glyphicon glyphicon-calendar"></span>
                     </span>
                 </div>
             </div>
-		
+            
+			<%pageContext.setAttribute("crlf", "\r\n");%>
             <div class="room-contents">
                 <table class="room-list">
-                	<c:if test="null != ${list}"></c:if>
-                	<c:forEach var="list" items="${list}">
-                    <tr>
-                        <td rowspan="3" style="width: 30%;">
-                            <img src="/resources/campingroom/${list.roomSaveFileName}" alt="캠핑장 사진">
-                        </td>
-                        <td style="width: 30%;">
-                            <strong>${list.room_name}</strong>
-                        </td>
-                        <td rowspan="3" style="width: 20%;">
-                            ${list.price}
-                        </td>
-                        
-                        <td rowspan="3" style="width: 20%;">
-                            <input type="submit" class="btn btn-default" value="예약하기">
-                        </td>
-                    </tr>
+                	
+	                	<c:forEach var="list" items="${list}">
+		                    <tr>
+		                        <td class="col-sm-3" rowspan="3">
+		                            <img src="/resources/campingroom/${list.roomSaveFileName}" alt="${list.roomFilename}">
+		                        </td>
+		                        <td class="col-sm-6">
+		                            <strong>${list.room_name}</strong>
+		                        </td>
+		                        <td class="col-sm-2" rowspan="3" style="color: red">
+		                            <strong><fmt:formatNumber value="${list.price}" pattern="#,###"/></strong> 원		                            		                             
+		                        </td>		                        
+		                        <td class="col-sm-1" rowspan="3">
+		                            <input type="submit" class="btn btn-primary" value="예약하기">
+		                        </td>
+		                    </tr>	 
+		                    <tr>
+		                    	<c:set var = "explanation" value = "${list.explanation}"/>		                    	
+		                        <td>${fn:replace(explanation, crlf, "</br>")}</td>
+		                    </tr>
+		                    <tr>
+		                    	<c:set var = "attension" value = "${list.attension}"/>		                    	
+		                        <td>${fn:replace(attension, crlf, "</br>")}</td>		                        
+		                    </tr>
+	                    </c:forEach>
                     
-                    
-                    <tr>
-                        <td>${list.explanation}</td>
-                    </tr>
-                    <tr>
-                        <td>${list.attension}</td>
-                    </tr>
-                    </c:forEach>
-
-                  <!--   <tr>
-                        <td rowspan="3" style="width: 30%;">
-                            <img src="#" alt="캠핑장 사진">
-                        </td>
-                        <td style="width: 30%;">
-                            <strong>나이아가라</strong>
-                        </td>
-                        <td rowspan="3" style="width: 20%;">
-                            30,000원
-                        </td>
-                        <td rowspan="3" style="width: 20%;">
-                            <input type="button" class="btn btn-default" value="예약하기">
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>상품 설명 Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio esse quisquam doloribus est sequi. Obcaecati unde, neque odit optio deleniti perferendis saepe vel, expedita, eaque ducimus ex at similique consectetur!</td>
-                    </tr>
-                    <tr>
-                        <td>주의사항 Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis quaerat eos omnis ad aliquid architecto velit, quo praesentium beatae voluptates. A exercitationem expedita ratione maiores itaque nam reprehenderit. Delectus, veniam?</td>
-                    </tr>
-
-                    <tr>
-                        <td rowspan="3" style="width: 30%;">
-                            <img src="#" alt="캠핑장 사진">
-                        </td>
-                        <td style="width: 30%;">
-                            <strong>나이아가라</strong>
-                        </td>
-                        <td rowspan="3" style="width: 20%;">
-                            30,000원
-                        </td>
-                        <td rowspan="3" style="width: 20%;">
-                            <input type="button" class="btn btn-default" value="예약하기">
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>상품 설명 Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio esse quisquam doloribus est sequi. Obcaecati unde, neque odit optio deleniti perferendis saepe vel, expedita, eaque ducimus ex at similique consectetur!</td>
-                    </tr>
-                    <tr>
-                        <td>주의사항 Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis quaerat eos omnis ad aliquid architecto velit, quo praesentium beatae voluptates. A exercitationem expedita ratione maiores itaque nam reprehenderit. Delectus, veniam?</td>
-                    </tr> -->
                 </table>
             </div>
             
@@ -235,46 +314,33 @@
                     <div id="menu1" class="tab-pane fade in active">                    
                         <div class="review-frame">
                         	<c:forEach var="review" items="${review}">
-                            <div class="user-id">
-                                <strong>${review.user_id}</strong> 
-                            </div>
-                       
-                            <div class="star">
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                            </div>
-                     
-                            <div class="date">
-                                ${review.reg_date}
-                            </div>
-                            <div class="review">
-                                <p>${review.content}</p>
-                            </div>
+                        		<div class="review-list">
+		                            <div class="user-id">
+		                                <strong>${review.user_id}</strong> 
+		                            </div>
+		                            
+		                            <div class="review">
+		                                <p>${review.content}</p>
+		                            </div>
+		                       
+		                            <div>
+		                            	<c:forEach varStatus="status" begin="1" end="5">		                                		
+	                                		<c:if test="${review.score ge status.current}">
+	                                			<span class="glyphicon glyphicon-star"></span>
+	                                		</c:if>
+	                                		<c:if test="${review.score lt status.current}">
+	                                			<span class="glyphicon glyphicon-star glyphicon-star-empty"></span>
+	                                		</c:if>			                                		
+	                                	</c:forEach>
+	                                	
+	                                	<c:set var = "date" value = "${review.reg_date}"/>
+			                          	${fn:substring(date, 0, 10)}	                                
+		                            </div>
+                        		</div>
                             </c:forEach>
-                        </div>
-                        
-                      <!--   <div class="review-frame">
-                            <div class="user-id">
-                                <strong>jspark</strong> 
-                            </div>
-                            <div class="star">
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                            </div>
-                            <div class="date">
-                                2018년 5월 20일
-                            </div>
-                            <div class="review">
-                                <p>네덜란드 캠핑장보다 좋기 때문에 행복지수가 올라갔다고 생각합니다. 때문에 때문에 때문에</p>
-                            </div>
-                        </div>  -->                       
+                        </div>               
                     </div>
+                    
                     <div id="menu2" class="tab-pane fade">
                         <div class="inquiry-frame">
                             <div class="user">
@@ -343,7 +409,7 @@
 
                 // 인포윈도우로 장소에 대한 설명을 표시합니다
                 var infowindow = new daum.maps.InfoWindow({
-                    content: `<div style="width:150px;text-align:center;padding:6px 0;">${campsite_name}</div>`
+                    content: `<div style="width:150px;text-align:center;padding:6px 0;">`+ campsite_name + `</div>`
                 });
                 infowindow.open(map, marker);
 
@@ -371,10 +437,6 @@
                 $('#datetimepicker1').data("DateTimePicker").maxDate(e.date.subtract(1, 'd'));
             });
         });
-        
-     
-    
-   		
         
     </script>
                      

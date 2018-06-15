@@ -2,6 +2,7 @@
     pageEncoding="utf-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -12,21 +13,30 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/css/bootstrap-datetimepicker.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/resources/css/glnav.css">
     <style>
-        .search {
-            border: 1px solid rgba(221, 217, 217, 0.424);
-        }
-
+    	.container-fluid {
+    		margin-top: 60px;    		
+    	}
+    	
+    	.search {
+    		margin-bottom: 10px;
+    	}
+    	
         .filter {
-            border: 1px solid rgba(221, 217, 217, 0.424);
+            border: 1px solid rgba(221, 217, 217, 0.5);
             background: rgba(221, 217, 217, 0.424);
             padding: 0;
             height: 98vh;
         }
 
         .campsite-list {
-            border: 1px solid rgba(221, 217, 217, 0.424);
-            margin-bottom: 1rem;
+            border: 1px solid rgba(221, 217, 217, 0.5);
+            margin-bottom: 1rem;                        
+        }
+        
+        .campsite-list div {
+        	margin: 5px;
         }
 
         .form-row {
@@ -56,7 +66,7 @@
 		}
 
 		.btn-search {
-			background-color: rgba(235, 229, 229, 0.918);
+			background-color: rgba(235, 229, 229, 0.9);
 			border: none;
 			padding: 1.3rem;
 			border-top-right-radius: 1rem;
@@ -76,20 +86,125 @@
         .content-right {
             height: 98vh;            
         }
+        
+        .bakset-info {
+        	position: absolute;
+        	top: 100px;
+        	left: 50px;
+        	z-index: 100;
+        	background-color: rgba(221, 217, 217);
+        	width: 250px;
+        	height: 150px;			      			
+			text-align: center;						        	
+        	display: none;
+        }
+        
+        .btn-x {
+        	position: absolute;
+        	top: 0;
+        	right: 0;     	
+        }
+        
+        .price {
+        	color: red;
+        }
+        
+        .campsite-list:hover {
+        	transform: scale(1.05);
+        }
+        
+        .glyphicon-star {
+        	color: orange;
+        }
+        
+        .glyphicon-star-empty {
+        	color: gray;
+        }
+                
     </style>
 </head>
-<body>        
-    <div class="container-fluid">
-        <div class="row">
-            <div class="search-content">
-                <div class="search" align="center">
-                    <form action="#" method="post">
-				<input type="text" name="" class="btn input-search"><button type="submit" class="btn-search"><i class="fa fa-search"></i></button>
-			</form>
-                </div>
+<body>
+    <nav class="navbar navbar-default global-nav">          
+        <a href="/" class="navbar-brand">
+        	<div>
+        		<img height="20px" alt="로고" src="/resources/img/logo2.png">	
+        	</div>
+        </a>        
+        <div class="collapse navbar-collapse" id="nav-collapse">
+            <ul class="nav navbar-nav">
+               	<li><a href="/filter/filterlist">캠핑장 찾기</a></li>
+               	<li class="dropdown">
+                	<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">호스팅 <span class="caret"></span></a>
+                	<ul class="dropdown-menu">
+                        <li><a href="/host/showcamp">마이호스팅</a></li>
+                        <li><a href="/host/addcamp">캠핑장 등록</a></li>   
+						<li><a href="/host/roomform">캠핑상품 등록</a></li>                                             
+                    </ul>
+               	</li>                
+                <!-- <li class="dropdown">
+                	<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">커뮤니티 <span class="caret"></span></a>
+                	<ul class="dropdown-menu">
+                        <li><a href="/board/showlist_camptip">캠핑 팁</a></li>
+                        <li><a href="/board/showlist_campreview">캠핑 후기</a></li>
+                        <li><a href="/board/showlist_ask">질문 게시판</a></li>
+                    </ul>
+               	</li> -->               	
+                <li class="dropdown">
+                	<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">고객센터 <span class="caret"></span></a>
+                	<ul class="dropdown-menu">
+                        <li><a href="/board/showlist_faq">FAQ</a></li>
+                        <li><a href="/board/showlist_notice">공지사항</a></li>
+                        <li><a href="/board/showlist_one2one">1:1 문의</a></li>
+                        <li><a href="#">나의 문의 내역</a></li>
+                    </ul>
+               	</li>
                 
+                <li><a href="#">어바웃</a></li>
+            </ul>
+            
+            <ul class="nav navbar-nav navbar-right">
+            	<c:if test="${empty sessionScope.id}">
+	            	<li class="dropdown"><a href="/common/login">로그인</a></li>
+	          		<li class="dropdown"><a href="/common/signup">회원가입</a></li>            	
+            	</c:if>
+            	
+				<c:if test="${!empty sessionScope.user_no}">
+	                <li class="dropdown">
+	                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">마이 페이지 <span class="caret"></span></a>
+	                    <ul class="dropdown-menu">
+	                        <li><a href="/user/showinfo">개인정보 수정</a></li>
+	                        <li><a href="/user/currentbooking_user">예약 내역</a></li>
+	                        <li><a href="/user/showbasket">장바구니</a></li>
+	                        <li><a href="/common/logout">로그아웃</a></li>
+	                    </ul>
+	                </li>
+				</c:if>
+				
+				<c:if test="${!empty sessionScope.host_no}">
+					<li class="dropdown">
+	                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">마이 페이지 <span class="caret"></span></a>
+	                    <ul class="dropdown-menu">
+	                        <li><a href="/host/showinfo">개인정보 수정</a></li>
+	                        <li><a href="/host/currentbooking_host">예약 내역</a></li>	                        
+	                        <li><a href="/common/logout">로그아웃</a></li>
+	                    </ul>
+	                </li>
+				</c:if>
+            </ul>      
+        </div>
+    </nav>
+        
+    <div class="container-fluid">
+    	<div class="search" align="center">
+	    	<form action="/lookup" method="post">
+		        <input type="text" placeholder="검색" name="search" class="btn input-search"><button type="submit" class="btn-search"><i class="fa fa-search"></i></button>
+		    </form>
+	    </div>
+	    
+        <div class="row">
+            <div class="search-content">           		
                 <div class="col-sm-2 filter">                  
-                    <form action="/filter/campsite_group">
+                    <form action="/filter/filterlist">
                         <span>체크인</span>
                         <div class="form-group">
                             <div class='input-group date' id='datetimepicker1'>
@@ -203,93 +318,145 @@
                                 <label for="r6" class="form-check-label">100,000 이하</label>
                             </div>
                         </div>                        
-
                         <div class="form-row">
                             <input type="submit" class="btn btn-primary btn-filter-search" value="검색">
                         </div>
                     </form>
-                        
-                    
                 </div>
                 
                 <div class="col-sm-7">
                     <div class="content-center">
-                    	<c:if test="${!empty result}">                        
+                    	<c:if test="${!empty result}">
 							<c:forEach var="result" items="${result}">
-                        		<div class="col-sm-4">
-                            		<div class="campsite-list">	                            
-		                                <!-- <img src="#" alt="캠핑장" class="campsite-img"> -->
+								<div class="col-sm-4">
+									<div class="campsite-list">
+										<div class="campsite-img-frame">
+											<img src="/resources/fileupload/${result.saveFileName}" alt="${result.filename}" class="campsite-img">										
+										</div>
 		                                <div class="name">${result.campsite_name}</div>
 		                                <div class="address">
 		                                    <a href="#" onclick="setPoint(event)">${result.address}</a>
 		                                </div>
-		                                <div class="price">${result.price}</div>
-		                                <div class="rating">4.5</div>
-		                                <a href="#" class="btn btn-success">장바구니</a>
-		                                <a href="#" class="btn btn-primary">예약하기</a>
+		                                <div class="price">
+		                                	<strong><fmt:formatNumber value="${result.price}" pattern="#,###" /></strong> 원		                                	
+		                               	</div>
+		                                <div class="rating">
+		                                	<c:if test="${result.score le 0}">
+		                                		<c:forEach varStatus="status" begin="1" end="5">
+		                                			<span class="glyphicon glyphicon-star glyphicon-star-empty"></span>
+		                                		</c:forEach>
+		                                	</c:if>
+		                                	
+		                                	<c:if test="${result.score gt 0}">
+			                                	<c:forEach varStatus="status" begin="1" end="5">		                                		
+			                                		<c:if test="${result.score ge status.current}">
+			                                			<span class="glyphicon glyphicon-star"></span>
+			                                		</c:if>
+			                                		<c:if test="${result.score lt status.current}">
+			                                			<span class="glyphicon glyphicon-star glyphicon-star-empty"></span>
+			                                		</c:if>			                                		
+			                                	</c:forEach>		                                	
+			                                	(<fmt:formatNumber value="${result.score}" pattern=".0"/>)
+		                                	</c:if>
+		                                </div>
+		                                <a href="/user/addbasket?campsite_no=${result.campsite_no}" class="btn btn-success" onclick="addItemOnBasket(event);">장바구니</a>
+		                                <div class="bakset-info">
+		                                	<button class="btn btn-x" onclick="closeBasketInfo(event);">X</button>
+		                                	<br/>
+		                                	<br/>
+		                                	<p>상품이 장바구니에 담겼습니다</p>
+		                                	<br/>
+		                                	<a href="/user/showbasket" class="btn btn-default">장바구니 가기</a>		                                	
+		                                </div>
+		                                <a href="/user/showbookingpage?campsite_no=${result.campsite_no}" class="btn btn-primary">예약하기</a>
                             		</div>
                         		</div>
 	                        </c:forEach>	                            
-                        </c:if>                 
+                        </c:if>
+                        
+                        <div class="pagination col-sm-12">
+	                        <ul class="pagination">
+	                        	<c:if test="${pageMap.currentPage eq 1}">
+	                        		<li>
+	                        			<a href="#">이전</a>
+	                        		</li>                        		
+	                        	</c:if>
+								<c:if test="${pageMap.currentPage ne 1}">
+									<c:if test="${1 eq pageMap.method}">
+										<li>
+		                        			<a href="http://localhost/filter/filterlist?${pageMap.strParam}pages=${pageMap.prevPage}">이전</a>
+										</li>
+									</c:if>
+
+									<c:if test="${2 eq pageMap.method}">
+										<li>
+		                        			<a href="http://localhost/lookup?${pageMap.strParam}pages=${pageMap.prevPage}">이전</a>
+										</li>
+									</c:if>
+	                        	</c:if>
+	                        	<c:forEach var="i" begin="${pageMap.startPage}" end="${pageMap.endPage}" step="1">
+ 	                        		<c:if test="${1 eq pageMap.method}">
+ 	                        		<c:choose>
+	                         			<c:when test="${i eq pageMap.currentPage}">
+	                         				<li class="active">
+	                         					<a href="http://localhost/filter/filterlist?${pageMap.strParam}pages=${i}">${i}</a>	
+	                         				</li>
+	                        			</c:when>
+	                        			<c:otherwise>
+	                        				<li>
+		                        				<a href="http://localhost/filter/filterlist?${pageMap.strParam}pages=${i}">${i}</a>
+	                        				</li>
+	                        			</c:otherwise>
+	                        		</c:choose>
+ 	                        		</c:if>
+ 	                        		<c:if test="${2 eq pageMap.method}">
+ 	                        		<c:choose>
+	                         			<c:when test="${i eq pageMap.currentPage}">
+	                         				<li class="active">
+	                         					<a href="http://localhost/lookup?${pageMap.strParam}pages=${i}">${i}</a>	
+	                         				</li>
+	                        			</c:when>
+	                        			<c:otherwise>
+	                        				<li>
+		                        				<a href="http://localhost/lookup?${pageMap.strParam}pages=${i}">${i}</a>
+	                        				</li>
+	                        			</c:otherwise>
+	                        		</c:choose>
+ 	                        		</c:if>
+	                        	</c:forEach>
+	                        	<c:if test="${pageMap.currentPage ne pageMap.endPage || pageMap.next eq true}">
+	                        		<c:if test="${1 eq pageMap.method}">
+		                        		<li>
+		                        			<a href="http://localhost/filter/filterlist?${pageMap.strParam}pages=${pageMap.nextPage}">다음</a>
+	    	                    		</li>
+	                        		</c:if>
+
+	                        		<c:if test="${2 eq pageMap.method}">
+		                        		<li>
+		                        			<a href="http://localhost/lookup?${pageMap.strParam}pages=${pageMap.nextPage}">다음</a>
+	    	                    		</li>
+	                        		</c:if>
+	                        	</c:if>
+	                        	<c:if test="${pageMap.endPage eq pageMap.currentPage && pageMap.next ne true}">
+	                        		<li>
+	                        			<a href="#">다음</a>
+	                        		</li>                    		              		
+	                        	</c:if>
+							</ul>
+                        </div>
+                        
                     </div>
-
-                    <!-- <div class="pagenation-controls">                        
-                        <ul class="pagination">                            
-                            <li class="disable"><a href="#">이전</a></li>
-                            <li class="active"><a href="#">1</a></li>
-                            <li><a href="#">2</a></li>
-                            <li><a href="#">3</a></li>
-                            <li><a href="#">4</a></li>
-                            <li><a href="#">5</a></li>
-                            <li><a href="#">다음</a></li>
-                        </ul>                        
-                    </div> -->
-        <!-- 페이징  -->
-		<c:choose>
-		<c:when test="${paging.numberOfRecords ne NULL and paging.numberOfRecords ne '' and paging.numberOfRecords ne 0}">
-		<div class="text-center marg-top">
-			<ul class="pagination">
-				<c:if test="${paging.currentPageNo gt 5}">  											  <!-- 현재 페이지가 5보다 크다면(즉, 6페이지 이상이라면) -->
-					<li><a href="javascript:goPage(${paging.prevPageNo}, ${paging.maxPost})">이전</a></li> <!-- 이전페이지 표시 -->
-				</c:if>
-				<!-- 다른 페이지를 클릭하였을 시, 그 페이지의 내용 및 하단의 페이징 버튼을 생성하는 조건문-->
-					<c:forEach var="i" begin="${paging.startPageNo}" end="${paging.endPageNo}" step="1"> <!-- 변수선언 (var="i"), 조건식, 증감식 -->
-		            <c:choose>
-		                <c:when test="${i eq paging.currentPageNo}"> 
-		                      <li class="active"><a href="javascript:goPage(${i}, ${paging.maxPost})">${i}</a></li> <!-- 1페이지부터 10개씩 뽑아내고, 1,2,3페이지순으로 나타내라-->
-		                </c:when>
-		                	<c:otherwise>
-		                    <li><a href="javascript:goPage(${i}, ${paging.maxPost})">${i}</a></li> 
-							</c:otherwise>
-						</c:choose>
-					</c:forEach>
-					<!-- begin에 의해서 변수 i는 1이기 때문에, 처음에는 c:when이 수행된다. 그 후 페이징의 숫자 2를 클릭하면 ${i}는 2로변하고, 현재는 ${i}는 1이므로 otherwise를 수행한다
-					         그래서 otherwise에 있는 함수를 수행하여 2페이지의 게시물이 나타나고, 반복문 실행으로 다시 forEach를 수행한다. 이제는 i도 2이고, currentPageNo도 2이기 때문에
-					     active에 의해서 페이징부분의 2에 대해서만 파란색으로 나타난다. 그리고 나머지 1,3,4,5,이전,다음을 표시하기위해 다시 c:otherwise를 수행하여 페이징도 나타나게한다.-->
-				<!-- // 다른 페이지를 클릭하였을 시, 그 페이지의 내용 및 하단의 페이징 버튼을 생성하는 조건문-->
-										
-				<!-- 소수점 제거 =>-->
-				<fmt:parseNumber var="currentPage" integerOnly="true" value="${(paging.currentPageNo-1)/5}"/>
-				<fmt:parseNumber var="finalPage" integerOnly="true" value="${(paging.finalPageNo-1)/5}"/>
-					
-				<c:if test="${currentPage < finalPage}"> <!-- 현재 페이지가 마지막 페이지보다 작으면 '다음'을 표시한다. -->
-					<li><a href="javascript:goPage(${paging.nextPageNo}, ${paging.maxPost})">다음</a></li>
-				</c:if> 
-			</ul>
-		</div>
-		</c:when>
-		</c:choose>
-	</div>	
-                </div>
-
-                <div class="col-sm-3">
+				</div>
+				
+				<div class="col-sm-3">
                     <div class="content-right">
                         <div id="map" style="width:100%; height:95vh;"></div>
                     </div>
                 </div>
+			</div>
                 
-            </div>           
-        </div>
+        </div>           
+    </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.1/moment.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
@@ -395,10 +562,45 @@
                 } 
             });
         }
+        
+        // 장바구니       
+        var addItemOnBasket = function(event) {
+        	event.preventDefault();
+        	e = event;
+        	var idx = event.target.href.indexOf("=");
+        	var cam_no = event.target.href.slice(idx+1);        	 
+        	
+        	$.ajax({        	
+    			type : "GET",
+    			url : "/user/addbasket",    			
+    			data : {
+					"campsite_no" : cam_no
+				},
+    			
+    			success : function(data) {					
+    				if (data == 0) {    					
+    					var node = e.target.nextElementSibling
+    		        	node.style.display = "block";
+    				} else if (data == 1) {    					
+    					var node = e.target.nextElementSibling
+    		        	node.style.display = "block";
+    				} else if (data == -2) {    					
+    					alert('일반 회원만 이용가능한 기능입니다.');
+    					location.href = "/common/login";
+    				}
+    			},
+    		});        	     	
+        }
+       
+        var closeBasketInfo = function (event) {
+        	event.target.parentElement.style.display = "none";        	
+        }
+        	 
     </script>
     <script>
 		function goPage(pages, lines) {
-		    location.href = '?' + "pages=" + pages;
+			var strParam = ${pageMap.strParam};
+		    location.href = '?' + strParam + "pages=" + pages;
 		}
 	</script>    
 </body>
