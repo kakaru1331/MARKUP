@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Select</title>
+</head>
+<body>
+    <select name="campsite_group">
+        <option value="글램핑" id="glamping">글램핑</option>
+        <option value="오토캠핑" id="autocamping">오토캠핑</option>
+        <option value="백패킹" id="backpacking">백패킹</option>
+        <option value="카라반" id="carvan">카라반</option>
+    </select>
+
+    <button id="btn-change-option">셀렉트 옵션 변경</button>
+
+    <script>
+        var campsiteGroupOfHost = "글램핑";
+        var optionIdx = 1;
+        var changeOpt = 
+            function() {                
+                var campsiteGroupSelectElem = document.querySelector('select[name=campsite_group]');
+                campsiteGroupSelectElem[optionIdx].setAttribute('selected', '');
+                if (optionIdx > 0)
+                    campsiteGroupSelectElem[optionIdx-1].removeAttribute('selected');
+                else 
+                    campsiteGroupSelectElem[3].removeAttribute('selected');
+                
+                optionIdx++;
+                
+                if (optionIdx == 4)
+                    optionIdx = 0;
+            }
+
+        var changeOptionBtn = document.querySelector('#btn-change-option');
+        changeOptionBtn.addEventListener('click', changeOpt);        
+    </script>
+</body>
+</html>
