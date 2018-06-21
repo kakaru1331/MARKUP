@@ -84,7 +84,7 @@
 			</c:forEach>
 		</table>
 		
-		<c:if test="${sessionScope.id ne null}">	
+		<c:if test="${sessionScope.id eq 'admin'}">	
 			<div class="control">
 				<a href="#" class="btn btn-primary" id="btn-post">글쓰기</a>			
 			</div>		

@@ -137,7 +137,7 @@
 						<td>
 							<div class="post-content">
 								<c:set var = "mainContent" value="${board_group.content}"/>
-								${fn:replace(mainContent, crlf, "</br>")}								
+								${fn:replace(mainContent, crlf, "</br>")}
 							</div>
 							
 							<div class="btn-evaluation" style="text-align: center;">
@@ -165,86 +165,6 @@
 					목록
 				</button>
 			</div>
-		</div>
-			
-		<div class="comment-frame">								
-			<c:if test="${sessionScope.board_group != 5 && sessionScope.board_group != 6}">
-				<table class="table table-striped table-comment">
-					<c:if test="${!empty comlist}">
-						<div class="comments-icon">
-							<i class="fa fa-comments" aria-hidden="true"></i>
-						</div>
-						<tbody>														
-							<c:forEach var="comlist" items="${comlist}">
-								<tr>
-									<td>
-										<span class="comment-id">
-											${comlist.comment_id}										
-										</span>
-																				
-										<span class="pull-right">
-											<fmt:formatDate value="${comlist.reg_date}" var="regDate" pattern="yyyy-MM-dd"/>
-											${regDate}
-											<c:if test="${sessionScope.id == comlist.comment_id}">
-												<a class="comment-edit" onClick="up(${comlist.comment_no});">
-													| 수정
-												</a> |
-												<a class="comment-delete" onClick="de(${comlist.comment_no});">
-													삭제
-												</a>										
-												
-												<form id="de">
-													<input type="hidden" name="comment_no" id="comment_no">
-												</form>
-											</c:if>
-										</span>
-									</td>
-								</tr>
-								<tr>									
-									<c:set var = "contents" value = "${comlist.contents}"/>			                        
-			                        <td>
-			                        	${fn:replace(contents, crlf, "</br>")}			                        	
-		                        	</td>									
-								</tr>
-							</c:forEach>
-						</tbody>
-					</c:if>
-				</table>
-				
-				<div class="comment-form-frame" style="width: 100%;">
-					<form action="/board/writecomment" method="post">
-						<table class="table">
-							<c:if test="${!empty sessionScope.id}">
-								<tr>
-									<td class="col-sm-10 textarea-comment">
-										<textarea class="form-control textarea-comment" 
-										name="contents" placeholder="댓글 내용을 입력해주세요" rows="4" required></textarea>
-									</td>
-									<td class="col-sm-2 submit-comment">
-										<input type="submit" class="btn btn-primary btn-submit-comment" value="댓글 쓰기">
-									</td>
-								</tr>					
-							</c:if>
-						</table>
-					</form>
-									
-					<c:if test="${empty sessionScope.id}">
-						<table class="table">								
-							<tr>
-								<td class="col-sm-10 textarea-comment">
-									<textarea class="form-control textarea-comment" 
-									name="contents" placeholder="비회원은 댓글을 작성할 수 없습니다" rows="4" required></textarea>
-								</td>
-								<td class="col-sm-2 submit-comment">
-									<a href="/common/login">
-										<input type="button" class="btn btn-primary btn-submit-comment" value="로그인">
-									</a>									
-								</td>
-							</tr>
-						</table>						
-					</c:if>
-				</div>				
-			</c:if>	
 		</div>
 	</div>
 			

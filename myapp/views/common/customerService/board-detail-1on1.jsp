@@ -130,7 +130,7 @@
 									</a> |
 									<a class="post-delete" onclick="fn_del()">삭제</a>
 								</div>							
-							</c:if>
+							</c:if>													
 						</td>
 					</tr>
 					<tr>
@@ -155,7 +155,7 @@
 								</div>
 							</div>
 						</td>
-					</tr>
+					</tr>		
 				</tbody>
 			</table>				
 			
@@ -167,14 +167,14 @@
 			</div>
 		</div>
 			
-		<div class="comment-frame">								
-			<c:if test="${sessionScope.board_group != 5 && sessionScope.board_group != 6}">
+		<div class="comment-frame">
+			<c:if test="${sessionScope.id eq 'admin'}">
 				<table class="table table-striped table-comment">
 					<c:if test="${!empty comlist}">
 						<div class="comments-icon">
-							<i class="fa fa-comments" aria-hidden="true"></i>
-						</div>
-						<tbody>														
+							<i class="fa fa-comments" aria-hidden="true"></i> 댓글
+						</div>						
+						<tbody>													
 							<c:forEach var="comlist" items="${comlist}">
 								<tr>
 									<td>
